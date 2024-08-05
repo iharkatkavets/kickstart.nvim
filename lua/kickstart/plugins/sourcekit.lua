@@ -10,6 +10,7 @@ return {
         sourcekit = {
           filetypes = { 'swift', 'objective-c', 'objective-cpp' },
           root_dir = lspconfig.util.root_pattern('.git', 'Package.swift', 'compile_commands.json'),
+          single_file_support = true,
         },
       }
 
