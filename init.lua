@@ -491,8 +491,24 @@ require('lazy').setup({
           filetypes = { 'c', 'cpp' },
           single_file_support = true,
         },
-        -- gopls = {},
-        pyright = {},
+        gopls = {},
+        pyright = {
+          cmd = { 'pyright-langserver', '--stdio' },
+          filetypes = { 'python' },
+          root_dir = function(fname)
+            local root_files = {
+              'pyproject.toml',
+              'setup.py',
+              'setup.cfg',
+              'requirements.txt',
+              'Pipfile',
+              'pyrightconfig.json',
+              '.git',
+            }
+            return require('lspconfig').util.root_pattern(unpack(root_files))(fname)
+          end,
+          single_file_support = true,
+        },
         bashls = {
           filetypes = { 'sh' },
         },
@@ -794,7 +810,7 @@ require('lazy').setup({
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
-      require("nvim-treesitter.install").prefer_git = true
+      require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
 
@@ -822,7 +838,7 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-  require 'kickstart.plugins.sourcekit',
+  --require 'kickstart.plugins.sourcekit',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
