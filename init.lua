@@ -523,9 +523,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {
-
-        },
+        tsserver = {},
         --
         lua_ls = {
           -- cmd = {...},
@@ -572,13 +570,13 @@ require('lazy').setup({
         },
       }
 
-      -- require('lspconfig').sourcekit.setup {
-      --   capabilities = vim.tbl_deep_extend('force', {}, capabilities, {}),
-      --   cmd = { 'sourcekit-lsp' },
-      --   filetypes = { 'swift', 'objective-c', 'objective-cpp' },
-      --   root_dir = require('lspconfig').util.root_pattern('.git', 'Package.swift', 'compile_commands.json'),
-      --   single_file_support = true,
-      -- }
+      require('lspconfig').sourcekit.setup {
+        capabilities = vim.tbl_deep_extend('force', {}, capabilities, {}),
+        cmd = { 'sourcekit-lsp' },
+        filetypes = { 'swift', 'objective-c', 'objective-cpp' },
+        root_dir = require('lspconfig').util.root_pattern('.git', 'Package.swift', 'compile_commands.json'),
+        single_file_support = true,
+      }
     end,
   },
 
@@ -614,7 +612,7 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
