@@ -23,10 +23,10 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- require 'kickstart.plugins.debug',
-  -- require 'plugins.indent_line',
-  -- require 'plugins.stackmap',
+  -- require 'dev.indent_line',
+  -- require 'dev.stackmap',
 
-  { import = 'plugins.always' },
+  { import = 'plugins' },
 }, {
   concurrency = 10,
   ui = {
