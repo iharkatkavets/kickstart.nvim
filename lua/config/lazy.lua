@@ -25,7 +25,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'dev.indent_line',
   -- require 'dev.stackmap',
-
+  require 'dev.codeforces-templates',
   { import = 'plugins' },
 }, {
   concurrency = 10,
